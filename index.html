@@ -2,8 +2,31 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
     <title>wangyiyouxuan</title>
+    <!--设置页面中的图标显示-->
+    <link rel="shortcut icon" href="./static/img/favicon.ico">
+    <!--重置浏览器默认样式的-->
+    <link rel="stylesheet" href="./static/css/react.css">
+    <!--引入在线字体图标库-->
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_942450_rys25astxrh.css">
+    <!--解决移动端300点击延迟-->
+    <script src="https://as.alipayobjects.com/g/component/fastclick/1.0.6/fastclick.js"></script>
+    <script>
+      if ('addEventListener' in document) {
+        document.addEventListener('DOMContentLoaded', function() {
+          FastClick.attach(document.body);
+        }, false);
+      }
+      if(!window.Promise) {
+        document.writeln('<script src="https://as.alipayobjects.com/g/component/es6-promise/3.2.2/es6-promise.min.js"'+'>'+'<'+'/'+'script>');
+      }
+      //rem适配
+      const width = document.documentElement.clientWidth;
+      const styleN = document.createElement('style');
+      styleN.innerHTML = 'html{font-size:'+width/16+'px  !important}';
+      document.head.appendChild(styleN);
+    </script>
   </head>
   <body>
     <div id="app"></div>

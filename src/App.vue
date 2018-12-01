@@ -1,23 +1,24 @@
+<!--模板-->
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
+    <!--路由界面显示-->
     <router-view/>
+    <!--底部导航-->
+    <FooterNav v-show="this.$route.meta.isShow"/>
   </div>
 </template>
-
+<!--默认暴露的Vue组件js代码-->
 <script>
-export default {
-  name: 'App'
-}
+  //子组件需要引入父组件的时候可以引入组件
+  import FooterNav from './components/FooterNav/FooterNav.vue'
+  export default {
+    //注册组件
+    components:{
+      FooterNav
+    }
+  }
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="stylus" rel="stylesheet/stylus" scoped>
+  /*css样式*/
 </style>
