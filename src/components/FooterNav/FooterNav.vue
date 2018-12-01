@@ -50,10 +50,11 @@
     position fixed
     left 0
     bottom 0
+    background white
     .footer
       width 100%
       height 100%
-      background #999
+      /*background #999*/
       .footerList
         width 100%
         height 100%
@@ -66,6 +67,7 @@
           display flex
           flex-direction column
           align-items center
+          color #666
           &.footerColor
             color red
           li
@@ -75,8 +77,10 @@
             margin-top 0.2rem
             text-align: center
           span
-            font-size 0.2rem
-            margin-bottom 0.2rem
+            font-size 0.6rem
+            margin-bottom 1rem
+            padding-top 0.2rem
+
 
 
 </style>
