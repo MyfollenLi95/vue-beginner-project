@@ -5,35 +5,15 @@
     <!--横向滑屏部分-->
     <div class="subjectSeleteContainer">
       <ul class="subjectSeleteList">
-        <li class="subjectSeleteItem">
+        <li class="subjectSeleteItem" v-for="(topicListItem,index) in homeData.topicList" :key="index">
           <div class="subjectSeleteItemImg">
-            <img src="http://yanxuan.nosdn.127.net/da9c2255909d0d1fe5cabff6d93c03db.png?imageView&quality=65&thumbnail=330x330" alt="">
+            <img :src="topicListItem.itemPicUrl" alt="">
           </div>
           <div class="subjectSeleteItemContent">
-            <h4 class="title">给毛孔来一次深度清洁</h4>
-            <span class="price">107.1元起</span>
+            <h4 class="title">{{topicListItem.title}}</h4>
+            <span class="price">{{topicListItem.priceInfo}}元起</span>
           </div>
-          <div class="subjectSeleteItemDescribe">硅胶洁面仪，洗出会发光的素颜肌</div>
-        </li>
-        <li class="subjectSeleteItem">
-          <div class="subjectSeleteItemImg">
-            <img src="http://yanxuan.nosdn.127.net/da9c2255909d0d1fe5cabff6d93c03db.png?imageView&quality=65&thumbnail=330x330" alt="">
-          </div>
-          <div class="subjectSeleteItemContent">
-            <h4 class="title">给毛孔来一次深度清洁</h4>
-            <span class="price">107.1元起</span>
-          </div>
-          <div class="subjectSeleteItemDescribe">硅胶洁面仪，洗出会发光的素颜肌</div>
-        </li>
-        <li class="subjectSeleteItem">
-          <div class="subjectSeleteItemImg">
-            <img src="http://yanxuan.nosdn.127.net/da9c2255909d0d1fe5cabff6d93c03db.png?imageView&quality=65&thumbnail=330x330" alt="">
-          </div>
-          <div class="subjectSeleteItemContent">
-            <h4 class="title">给毛孔来一次深度清洁</h4>
-            <span class="price">107.1元起</span>
-          </div>
-          <div class="subjectSeleteItemDescribe">硅胶洁面仪，洗出会发光的素颜肌</div>
+          <div class="subjectSeleteItemDescribe">{{topicListItem.subtitle}}</div>
         </li>
       </ul>
     </div>
@@ -44,7 +24,12 @@
   //子组件需要引入父组件的时候可以引入组件
   //引入滑屏效果
   import BScroll from 'better-scroll'
+  //引入 vuex
+  import {mapState} from 'vuex'
   export default {
+    computed:{
+      ...mapState(['homeData'])
+    },
     mounted(){
       //桩体精选商品横向滑屏
       new BScroll('.subjectSeleteContainer',{

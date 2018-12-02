@@ -30,44 +30,13 @@
             <i class="iconfont icon-tiaozhuan"></i>
           </div>
           <ul class="goodsList">
-            <li class="goodsListLeftT">
+            <li :class="goodsListArr[index]" v-if="index<4" v-for="(tagItem,index) in homeData.tagList" :key="index">
               <div class="goodsDescribe">
-                <span>无限回购榜单</span>
-                <span class="smallFont">好物买了还想买</span>
+                <span>{{tagItem.name}}</span>
+                <span class="smallFont">{{tagItem.floorPrice}}元起</span>
               </div>
               <div class="goodsImg">
-                <img src="http://yanxuan.nosdn.127.net/213c5adcd1181983207cef460f1115b6.png" alt="拖鞋">
-                <img src="http://yanxuan.nosdn.127.net/362a8249b48d91d99604680b5471b507.png" alt="按摩">
-              </div>
-            </li>
-            <li class="goodsListRightT">
-              <div class="goodsDescribe">
-                <span>无限回购榜单</span>
-                <span class="smallFont">好物买了还想买</span>
-              </div>
-              <div class="goodsImg">
-                <img src="http://yanxuan.nosdn.127.net/213c5adcd1181983207cef460f1115b6.png" alt="拖鞋">
-                <img src="http://yanxuan.nosdn.127.net/362a8249b48d91d99604680b5471b507.png" alt="按摩">
-              </div>
-            </li>
-            <li class="goodsListLeftB">
-              <div class="goodsDescribe">
-                <span>无限回购榜单</span>
-                <span class="smallFont">好物买了还想买</span>
-              </div>
-              <div class="goodsImg">
-                <img src="http://yanxuan.nosdn.127.net/213c5adcd1181983207cef460f1115b6.png" alt="拖鞋">
-                <img src="http://yanxuan.nosdn.127.net/362a8249b48d91d99604680b5471b507.png" alt="按摩">
-              </div>
-            </li>
-            <li class="goodsListRightB">
-              <div class="goodsDescribe">
-                <span>无限回购榜单</span>
-                <span class="smallFont">好物买了还想买</span>
-              </div>
-              <div class="goodsImg">
-                <img src="http://yanxuan.nosdn.127.net/213c5adcd1181983207cef460f1115b6.png" alt="拖鞋">
-                <img src="http://yanxuan.nosdn.127.net/362a8249b48d91d99604680b5471b507.png" alt="按摩">
+                <img :src="tagItem.picUrl" alt="拖鞋">
               </div>
             </li>
           </ul>
@@ -81,24 +50,24 @@
               <span>查看全部<i class="tempNext">></i></span>
             </div>
           </div>
-          <!--分离框-->
-          <Split />
-          <!--横向商品滑屏-->
-          <Shops name="firstNewShopT"/>
+          <!--白色分离框-->
+          <div class="SplitWhite"></div>
+          <!--横向商品滑屏上面的-->
+          <ShopsTop />
           <!--分离框-->
           <Split />
           <!--人气推荐，好物精选-->
           <div class="firstNewShop">
             <span class="arrows"></span>
-            <div  class="newFirst"><span>新品首发</span></div>
+            <div  class="newFirst"><span>人气推荐.好物精选</span></div>
             <div class="lookAll">
               <span>查看全部<i class="tempNext">></i></span>
             </div>
           </div>
-          <!--分离框-->
-          <Split />
-          <!--横向商品滑屏-->
-          <Shops name="firstNewShopB"/>
+          <!--白色分离框-->
+          <div class="SplitWhite"></div>
+          <!--横向商品滑屏下面的-->
+          <ShopsBottom />
           <!--分离框-->
           <Split />
           <!--严选限购时间-->
@@ -169,8 +138,10 @@
   import NavListGoods from '../../components/HomeChild/NavListGoods/NavListGoods.vue'
   //引入轮播部分组件
   import SwiperLoop from '../../components/HomeChild/SwiperLoop/SwiperLoop.vue'
-  //引入商品列表横向滑动组件
-  import Shops from '../../components/HomeChild/Shops/Shops.vue'
+  //引入商品列表横向滑动组件上面的
+  import ShopsTop from '../../components/HomeChild/ShopsTop/ShopsTop.vue'
+  //引入商品列表横向滑动组件下面的
+  import ShopsBottom from '../../components/HomeChild/ShopsBottom/ShopsBottom.vue'
   //引入分离框组件
   import Split from '../../components/PublicSplit/Split/Split.vue'
   //引入专题精选组件
@@ -179,6 +150,12 @@
   import ListGoods from '../../components/HomeChild/ListGoods/ListGoods.vue'
 
   export default {
+    data(){
+      return{
+        //定义个数据保存 goodsList 类名
+        goodsListArr:['goodsListLeftT','goodsListRightT','goodsListLeftB','goodsListRightB'],
+      }
+    },
     mounted(){
       //获取 home 数据信息 , 后面传一个回调函数等到数据到了之后执行
       this.$store.dispatch('getHomeData',() => {
@@ -204,8 +181,10 @@
       SwiperLoop,
       //注册商品列表导航组件
       NavListGoods,
-      //引入商品列表横向滑动组件
-      Shops,
+      //注册商品列表横向哈东组件上面的
+      ShopsTop,
+      //注册商品列表横向哈东组件下面的
+      ShopsBottom,
       //注册商家列表组件
       ListGoods,
       //注册专题精选组件
@@ -289,7 +268,7 @@
           .goodsDescribe
             display flex
             flex-direction column
-            font-size 0.7rem
+            font-size 0.6rem
             margin 0.5rem 0 0 0.8rem
             .smallFont
               font-size 0.5rem
@@ -297,11 +276,11 @@
               color rgb(127,127,127)
           .goodsImg
             width 3rem
-            height 3rem
+            height 6rem
             display flex
-            margin 0.5rem 1rem 1rem 1rem
             img
-              width 100%
+              height  100%
+              margin -1.5rem 0 0 -1.5rem
           &.goodsListLeftT
             margin 0 0.2rem 0.2rem 0.3rem
           &.goodsListRightT
@@ -310,18 +289,24 @@
             margin 0 0.2rem 0 0.3rem
           &.goodsListRightB
             margin 0 0.2rem 0 0
+      .SplitWhite
+        background #fff
+        width 100%
+        height .5rem
       .firstNewShop
         width 100%
         height 5rem
         text-align center
-        background pink
+        background #FEF0DF
         position relative
         .newFirst
           font-size 0.8rem
-          color rgb(127,127,127)
+          color #b4a078
           position absolute
-          left 6.3rem
+          left 4rem
           top 1.3rem
+          width 8rem
+          height 2rem
         .arrows
           position absolute
           left 46%
@@ -332,14 +317,14 @@
         .lookAll
           width 5rem
           height 1.5rem
-          background rgb(216,229,241)
+          background #f4e9cb
           line-height 1.5rem
           position absolute
           left 50%
           top 50%
           margin-left -2.5rem
           font-size 0.6rem
-          color rgb(127,127,127)
+          color #b4a078
       .shopTime
         width 100%
         height 6.5rem
