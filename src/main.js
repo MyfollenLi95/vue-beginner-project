@@ -6,6 +6,8 @@ import App from './App'
 import store from './store'
 //引入路由器对象
 import router from './router'
+//引入 mock 数据
+import './mock/mockServer'
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
