@@ -6,7 +6,7 @@
     <div class="swiper-wrapper-food">
       <div class="swiper-slide-food" v-for="(popularItem,index) in homeData.popularItemList ">
         <div class="swiperImg">
-          <img :src="popularItem.listPicUrl" alt="">
+          <img v-lazy="popularItem.listPicUrl" alt="">
         </div>
         <div class="swiperFood ellipsis">{{popularItem.name}}</div>
         <div class="swiperDoc ellipsis">
@@ -82,6 +82,7 @@
           background #eeeeee
           img
             width 100%
+            height 100%
         .swiperFood
           font-size 0.7rem
           margin-top 0.5rem

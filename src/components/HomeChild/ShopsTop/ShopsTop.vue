@@ -6,7 +6,7 @@
     <div class="swiper-wrapper-food">
       <div class="swiper-slide-food" v-for="(newItemNewUserItem,index) in homeData.newItemNewUserList ">
         <div class="swiperImg">
-          <img :src="newItemNewUserItem.primaryPicUrl" alt="">
+          <img v-lazy="newItemNewUserItem.primaryPicUrl" alt="">
         </div>
         <div class="swiperFood ellipsis">{{newItemNewUserItem.name}}</div>
         <div class="swiperDoc ellipsis">
@@ -82,6 +82,7 @@
           background #eeeeee
           img
             width 100%
+            height 100%
         .swiperFood
           font-size 0.7rem
           margin-top 0.5rem

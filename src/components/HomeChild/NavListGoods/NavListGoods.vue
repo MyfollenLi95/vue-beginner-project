@@ -4,14 +4,34 @@
   <section class="goodNavList">
     <div class="navListContainer">
       <ul class="navList">
-        <li><a href="javascript:;" class="active">推荐</a></li>
-        <li v-for="(cateItem,index) in homeData.cateList" :key="index">
-          <a href="javascript:;">{{cateItem.name}}</a>
+        <li><a href="javascript:;" :class="{active:currentIndex === 0}" @click="nextShop(0)">推荐</a></li>
+        <li v-for="(cateItem,index) in homeData.cateList" :key="index"
+             @click="nextShop(index+1)">
+          <a href="javascript:;" :class="{active:currentIndex === index+1}">{{cateItem.name}}</a>
         </li>
       </ul>
     </div>
-    <div class="navList-right-pull-down">
+    <div class="navList-right-pull-down" @click="isShow=true">
       <span></span>
+    </div>
+    <!--遮罩层-->
+    <div class="mask" ref="mask" v-show="isShow">
+      <!--列表全部-->
+      <div class="maskText">全部频道</div>
+      <ul class="maskList">
+        <li class="maskItem"><a href="javascript:;" class="active">推荐</a></li>
+        <li class="maskItem"><a href="javascript:;">居家</a></li>
+        <li class="maskItem"><a href="javascript:;">配件</a></li>
+        <li class="maskItem"><a href="javascript:;">服装</a></li>
+        <li class="maskItem"><a href="javascript:;">电器</a></li>
+        <li class="maskItem"><a href="javascript:;">洗护</a></li>
+        <li class="maskItem"><a href="javascript:;">饮食</a></li>
+        <li class="maskItem"><a href="javascript:;">餐厨</a></li>
+        <li class="maskItem"><a href="javascript:;">婴童</a></li>
+        <li class="maskItem"><a href="javascript:;">文体</a></li>
+      </ul>
+      <!--关闭遮罩层-->
+      <div class="closeMask" @click="isShow=false">x</div>
     </div>
     <!--红色下边框-->
     <div class="navListSplit"></div>
@@ -25,6 +45,18 @@
   //引入 vuex
   import {mapState} from 'vuex'
   export default {
+    data(){
+      return{
+        currentIndex:0, // 初始化当前 index 的值默认为0
+        isShow:false // 初始化遮罩层是否显示
+      }
+    },
+    methods:{
+      // 传入的 index 是当前遍历出来的索引值
+      nextShop(index){
+        this.currentIndex = index
+      },
+    },
     //在计算属性中展开 homeData数据
     computed:{
       ...mapState(['homeData'])
@@ -84,6 +116,46 @@
         background-image url("../../../../static/img/pull-down.png")
         background-repeat no-repeat
         background-size .8rem .8rem
+    /*遮罩层*/
+    .mask
+      position absolute
+      left 0
+      top 0
+      width 100%
+      height 8rem
+      background #fff
+      .maskText
+        font-size 0.6rem
+        position absolute
+        left 0.5rem
+        top 0.5rem
+      .maskList
+        width 100%
+        margin-top 1.5rem
+        li
+          width 2.5rem
+          height 0.5rem
+          text-align center
+          display inline-block
+          font-size 0.7rem
+          padding 0.6rem
+          background #FAFAFA
+          margin 0.1rem 0
+          border-radius 0.2rem
+          a
+            color #000
+            &.active
+              color red
+      .closeMask
+        width 1.2rem
+        height 1.2rem
+        text-align center
+        line-height 1.2rem
+        background white
+        color #000
+        position absolute
+        right 0
+        top 0
     /*下边框加不加都可以*/
     .navListSplit
       width 100%

@@ -7,7 +7,7 @@
       <ul class="subjectSeleteList">
         <li class="subjectSeleteItem" v-for="(topicListItem,index) in homeData.topicList" :key="index">
           <div class="subjectSeleteItemImg">
-            <img :src="topicListItem.itemPicUrl" alt="">
+            <img v-lazy="topicListItem.itemPicUrl" alt="">
           </div>
           <div class="subjectSeleteItemContent">
             <h4 class="title">{{topicListItem.title}}</h4>

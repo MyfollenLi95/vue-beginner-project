@@ -46,10 +46,6 @@ export default new VueRouter({
     {
       path:'/profile',
       component:Profile,
-      //路由里面有一个属性 meta 动态给它添加一个属性是否显示底部导航
-      meta:{
-        isShow:true
-      }
     },
     {
       path:'/shopcart',

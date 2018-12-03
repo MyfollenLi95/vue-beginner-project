@@ -4,7 +4,7 @@
     <!--使用插槽传入数据因为每一个头部信息不一样-->
     <ToHeader/>
     <!--主界面内容-->
-    <section class="wrap">
+    <section class="wrap" ref="sectionTop">
       <!--goods(商品列表) navList 切换栏-->
       <NavListGoods />
       <!--整体滑动-->
@@ -36,7 +36,7 @@
                 <span class="smallFont">{{tagItem.floorPrice}}元起</span>
               </div>
               <div class="goodsImg">
-                <img :src="tagItem.picUrl" alt="拖鞋">
+                <img v-lazy="tagItem.picUrl" alt="拖鞋">
               </div>
             </li>
           </ul>
@@ -123,7 +123,7 @@
       </section>
     </section>
     <!--右边的按钮回到顶部-->
-    <div class="gotoTop iconfont icon-huidaodingbu"></div>
+    <div class="gotoTop iconfont icon-huidaodingbu" @click="gotoTop"></div>
   </div>
 </template>
 <!--默认暴露的Vue组件js代码-->
@@ -166,7 +166,13 @@
         });
         console.log('home 的数据已经来了~~~')
       });
-
+    },
+    methods:{
+      gotoTop(){
+        //获取 sectionTop 标签
+        const section = this.$refs.sectionTop;
+        this.scrollLoop.scrollToElement(section,500); // BScroll上面的方法回到那个元素
+      }
     },
     //在计算属性中展开数据
     computed:{
@@ -297,11 +303,12 @@
         width 100%
         height 5rem
         text-align center
-        background #FEF0DF
+        background url("https://yanxuan.nosdn.127.net/1f3325048d0a103230c4f5218f9c6600.jpg")
+        background-repeat no-repeat
         position relative
         .newFirst
           font-size 0.8rem
-          color #b4a078
+          color #fff
           position absolute
           left 4rem
           top 1.3rem

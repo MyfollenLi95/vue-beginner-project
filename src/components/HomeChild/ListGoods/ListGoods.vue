@@ -5,11 +5,11 @@
     <div class="listGoods" v-for="(cateItem,index) in homeData.cateList" :key="index">
       <div class="listGoodsTitle">{{cateItem.name}}好物</div>
       <ul class="listGoodsAll">
-        <li class="listGoodsItem" v-for="(item,index) in cateItem.itemList" :key="index">
+        <li class="listGoodsItem"  v-if="index<7" v-for="(item,index) in cateItem.itemList" :key="index">
           <div class="listGoodsItemImg">
-            <img :src="item.listPicUrl" alt="">
+            <img v-lazy="item.listPicUrl" alt="">
           </div>
-          <div class="listGoodsItemContent">{{item.simpleDesc}}</div>
+          <div class="listGoodsItemContent ellipsis">{{item.simpleDesc}}</div>
           <div class="listGoodsItemName ellipsis">{{item.name}}</div>
           <div class="listGoodsItemPrice">￥{{item.retailPrice}}</div>
         </li>
@@ -18,9 +18,7 @@
             <span>更多电器好物</span>
             <i class="iconfont icon-tiaozhuan"></i>
           </div>
-          <div class="listGoodsItemContent">宽细夹排，升级爽滑凉感</div>
-          <div class="listGoodsItemName ellipsis">天然宽篾头层青碳化竹凉席</div>
-          <div class="listGoodsItemPrice">￥209.25</div>
+          <div class="listGoodsItemContent lastListGoodsItemContent"></div>
         </li>
       </ul>
       <!--分离框-->
@@ -70,6 +68,10 @@
         width 47%
         height 12rem
         display inline-block
+        vertical-align middle
+        margin-right 0.3rem
+        &.lastListGoodsItem
+          margin-left -0.35rem
         .listGoodsItemImg
           width 100%
           height 8rem
@@ -87,6 +89,7 @@
             top 2rem
           img
             width 100%
+            height 100%
         .listGoodsItemContent
           box-sizing border-box
           width 100%
