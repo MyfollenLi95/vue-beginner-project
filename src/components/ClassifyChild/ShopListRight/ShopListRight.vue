@@ -50,6 +50,7 @@
     computed:{
       ...mapState(['classify'])
     },
+    //监视当前的 index 值是否获取到了
     watch:{
       index(){
        this.$nextTick(()=>{

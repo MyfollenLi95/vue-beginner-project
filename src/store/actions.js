@@ -11,7 +11,8 @@ import {
 import {
   RECEIVE_HOME_DATA,
   RECEIVE_CLASSIFY_DATA,
-  RECEIVE_GENERALTHINGS_DATA
+  RECEIVE_GENERALTHINGS_DATA,
+  RECEIVE_NAVLISTTOP
 } from './mutation-types'
 export default {
   //异步获取 action 数据 homeData
@@ -56,5 +57,12 @@ export default {
     }else {
       console.log('发送请求失败~~')
     }
+  },
+
+  // 同步 action 获取数据识物的自定义数据
+  getNavListTop({commit},cb){
+    commit(RECEIVE_NAVLISTTOP);
+    //判断一下当前的cb是不是回调函数
+    typeof cb==='function' && cb()
   }
 }
