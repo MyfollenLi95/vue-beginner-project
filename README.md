@@ -1,4 +1,4 @@
-# wangyiyanxuan
+# wangyiyanxuan_vue
 ##网易严选项目开展
 * 第一步技术选型：vue框架开发(渐进式JavaScript 框架)
 * 第二步：使用vue脚手架搭建项目
@@ -46,7 +46,7 @@
 * 项目流程：
   * 此项目是网易严选，SPA(单页面应用)
   * 整体项目运用了 工程化(webpack) 、组件化(vue) 、 模块化(ES6) export(分别暴露，统一暴露) export default(默认暴露) import(引入)
-  * 拆分组件、实现静态界面、实现动态界面
+  * 实现界面的的步骤是：拆分组件、实现静态界面、实现动态界面
   * 拆分组件：路由组件、一般组件
   * 运用 better-scroll(滑动功能) 、 swiper(轮播功能) 、 pubsub-js(组件间通信，传属性)js库
   * 运用  vue框架 、 vue-cli脚手架 、 vue-router路由器 、 vuex状态管理
