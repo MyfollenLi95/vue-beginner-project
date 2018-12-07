@@ -3,7 +3,7 @@
   <div>
     <section id="shopCart">
       <header class="header">
-        <img src="https://yanxuan.nosdn.127.net/a9b8dd282983a8e6394acbd425e1ad8d.jpg?imageView&quality=75&thumbnail=750x0" alt="">
+        <img src="../../../static/img/wyyxTop.png" alt="">
         <div class="headerShopCart">购物车<span class="headerText">领券</span></div>
       </header>
       <section class="shopCartContent">
@@ -18,7 +18,7 @@
           </div>
           <div class="login">
             <div class="loginContent">去添加点什么吧~~</div>
-            <div  class="goToLogin">登录</div>
+            <div  class="goToLogin" @click="$router.replace('/loginemail')">登录</div>
           </div>
         </div>
       </section>

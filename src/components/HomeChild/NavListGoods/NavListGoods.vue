@@ -14,27 +14,29 @@
     <div class="navList-right-pull-down" @click="isShow=true">
       <span></span>
     </div>
-    <!--遮罩层-->
-    <div class="mask" ref="mask" v-show="isShow">
-      <!--列表全部-->
-      <div class="maskText">全部频道</div>
-      <ul class="maskList">
-        <li class="maskItem"><a href="javascript:;" class="active">推荐</a></li>
-        <li class="maskItem"><a href="javascript:;">居家</a></li>
-        <li class="maskItem"><a href="javascript:;">配件</a></li>
-        <li class="maskItem"><a href="javascript:;">服装</a></li>
-        <li class="maskItem"><a href="javascript:;">电器</a></li>
-        <li class="maskItem"><a href="javascript:;">洗护</a></li>
-        <li class="maskItem"><a href="javascript:;">饮食</a></li>
-        <li class="maskItem"><a href="javascript:;">餐厨</a></li>
-        <li class="maskItem"><a href="javascript:;">婴童</a></li>
-        <li class="maskItem"><a href="javascript:;">文体</a></li>
-      </ul>
-      <!--关闭遮罩层-->
-      <div class="closeMask" @click="isShow=false">x</div>
-    </div>
     <!--红色下边框-->
     <div class="navListSplit"></div>
+    <transition name="hide">
+      <!--遮罩层-->
+      <div class="mask" ref="mask" v-show="isShow">
+        <!--列表全部-->
+        <div class="maskText">全部频道</div>
+        <ul class="maskList">
+          <li class="maskItem"><a href="javascript:;" class="active">推荐</a></li>
+          <li class="maskItem"><a href="javascript:;">居家</a></li>
+          <li class="maskItem"><a href="javascript:;">配件</a></li>
+          <li class="maskItem"><a href="javascript:;">服装</a></li>
+          <li class="maskItem"><a href="javascript:;">电器</a></li>
+          <li class="maskItem"><a href="javascript:;">洗护</a></li>
+          <li class="maskItem"><a href="javascript:;">饮食</a></li>
+          <li class="maskItem"><a href="javascript:;">餐厨</a></li>
+          <li class="maskItem"><a href="javascript:;">婴童</a></li>
+          <li class="maskItem"><a href="javascript:;">文体</a></li>
+        </ul>
+        <!--关闭遮罩层-->
+        <div class="closeMask" @click="isShow=false">x</div>
+      </div>
+    </transition>
   </section>
 </template>
 <!--默认暴露的Vue组件js代码-->
@@ -124,6 +126,11 @@
       width 100%
       height 8rem
       background #fff
+      //
+      &.hide-enter-active,&.hide-leave-active
+        transition opacity  0.5s
+      &.hide-enter,&.hide-leave-to
+        opacity 0
       .maskText
         font-size 0.6rem
         position absolute

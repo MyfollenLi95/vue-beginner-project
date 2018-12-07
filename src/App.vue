@@ -1,10 +1,13 @@
 <!--模板-->
 <template>
   <div id="app">
+    <!--缓存路由组件-->
+    <keep-alive>
       <!--路由界面显示-->
       <router-view/>
-      <!--底部导航-->
-      <FooterNav v-show="this.$route.meta.isShow"/>
+    </keep-alive>
+    <!--底部导航-->
+    <FooterNav v-show="this.$route.meta.isShow"/>
   </div>
 </template>
 <!--默认暴露的Vue组件js代码-->

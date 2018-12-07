@@ -11,6 +11,11 @@ import Home from '../pages/Home/Home.vue'
 import GeneralThings from '../pages/GeneralThings/GeneralThings.vue'
 import Profile from '../pages/Profile/Profile.vue'
 import ShopCart from '../pages/ShopCart/ShopCart.vue'
+
+//引入登录和注册路由组件
+import LoginEmail from '../pages/Login/LoginEmail/LoginEmail.vue'
+import LoginPhone from '../pages/Login/LoginPhone/LoginPhone.vue'
+import Register from '../pages/Register/Register.vue'
 //声明使用vue插件
 Vue.use(VueRouter);
 //创建路由对象
@@ -54,6 +59,18 @@ export default new VueRouter({
       meta:{
         isShow:true
       }
+    },
+    {//邮箱登录界面
+      path:'/loginemail',
+      component:LoginEmail,
+    },
+    {//手机登录界面
+      path:'/loginphone',
+      component:LoginPhone,
+    },
+    {//手机注册界面
+      path:'/register',
+      component:Register,
     },
     //默认一上来显示
     {

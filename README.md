@@ -25,7 +25,7 @@
 	    "libraryName": "mint-ui",
 	    "style": true
 	  }
-	]]] 
+	]]]
  ---
 * 在开发中解决跨域问题:
  ---
@@ -43,3 +43,11 @@
 	npm run build
 	npm install -g serve(全局安装开启的这个服务)
 	serve dist
+* 项目流程：
+  * 此项目是网易严选，SPA(单页面应用)
+  * 整体项目运用了 工程化(webpack) 、组件化(vue) 、 模块化(ES6) export(分别暴露，统一暴露) export default(默认暴露) import(引入)
+  * 拆分组件、实现静态界面、实现动态界面
+  * 拆分组件：路由组件、一般组件
+  * 运用 better-scroll(滑动功能) 、 swiper(轮播功能) 、 pubsub-js(组件间通信，传属性)js库
+  * 运用  vue框架 、 vue-cli脚手架 、 vue-router路由器 、 vuex状态管理
+

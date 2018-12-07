@@ -3,7 +3,7 @@
   <div>
     <section id="register">
       <header class="header">
-        <img src="https://yanxuan.nosdn.127.net/a9b8dd282983a8e6394acbd425e1ad8d.jpg?imageView&quality=75&thumbnail=750x0" alt="">
+        <img src="../../../static/img/wyyxTop.png" alt="">
         <div class="headerShopCart">
           网易严选
           <span class="headerText iconfont icon-sousuo"></span>
@@ -17,9 +17,13 @@
             <img src="//yanxuan.nosdn.127.net/bd139d2c42205f749cd4ab78fa3d6c60.png" alt="">
           </div>
           <div class="registerMthods">
-            <div class="registerPhone"><i class="iconfont icon-iconfontshouji"></i>手机号码登录</div>
-            <div class="registerUser"><i class="iconfont icon-duanxin"></i>邮箱账号登录</div>
-            <div class="fastRegister">手机号快捷注册></div>
+            <!--手机登录-->
+            <div class="registerPhone" @click="$router.push('/loginphone')">
+              <i class="iconfont icon-iconfontshouji"></i>手机号码登录</div>
+            <!--邮箱登录-->
+            <div class="registerUser" @click="$router.push('/loginemail')">
+              <i class="iconfont icon-duanxin"></i>邮箱账号登录</div>
+            <div class="fastRegister" @click="$router.push('/register')">手机号快捷注册></div>
           </div>
         </div>
       </div>

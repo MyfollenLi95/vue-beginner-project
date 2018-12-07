@@ -47,7 +47,7 @@
           click: true,
           scrollY: true, // 垂直滑动
         });
-        console.log('数据已经来到~~');
+        console.log('classify数据获取成功~~');
 
       })
     },

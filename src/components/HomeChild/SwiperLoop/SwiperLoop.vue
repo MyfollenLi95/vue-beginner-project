@@ -4,7 +4,7 @@
     <div class="swiper-wrapper">
       <div class="swiper-slide" v-for="(focusItem,index) in homeData.focusList" :key="index">
         <a href="javascript:;">
-          <img class="swiper-slide" v-lazy="focusItem.picUrl" alt="">
+          <img class="swiper-slide" :src="focusItem.picUrl" alt="" :key="focusItem.picUrl">
         </a>
       </div>
     </div>
@@ -37,7 +37,7 @@
       _initSwiper(){
         //轮播
         new Swiper('.swiper-container', {
-          //loop:true,// 循环模式选项
+          loop: true,
           pagination: {
             el: '.swiper-pagination',
           },
